@@ -1,13 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import  { ProductList, CartList, Feedback, Context } from './components'
 import { addToCart, removeFromCart, retrieveAllProducts, retrieveCartProducts } from './logic'
-import { Route, withRouter, Redirect } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 export default withRouter(function ({ history }) {
     const [state, setState] = useContext(Context)
-    const [items, setItems] = useState([]);
-    // const [itemsInCart, setItemsInCart] = useState();
-    // const [error, setError] = useState()
+    // const [items, setItems] = useState([])
 
     useEffect(() => {
         render()
@@ -17,12 +15,11 @@ export default withRouter(function ({ history }) {
         (async() => {
             const products = await retrieveAllProducts()
             setState({ ...state, items: products })
-            setItems(products)
+            // setItems(products)
 
             const productsInCart = await retrieveCartProducts()
             setState({ ...state, itemsInCart: productsInCart })
-            
-            setState({ ...state });
+
             history.push('/home');
         })()
     }
@@ -31,6 +28,8 @@ export default withRouter(function ({ history }) {
         try {
             await addToCart(id)
 
+            const productsInCart = await retrieveCartProducts()
+            setState({ ...state, itemsInCart: productsInCart })
         } catch({ message }) {
             setState({...state, error: message})
         }
@@ -38,22 +37,22 @@ export default withRouter(function ({ history }) {
 
     async function onRemoveFromCartHandler (id) {
         try {
-            removeFromCart(id)
-
+            
+            await removeFromCart(id)
+            const productsInCart = await retrieveCartProducts()
+            
+            setState({ ...state, itemsInCart: productsInCart })
         } catch({ message }) {
             setState({...state, error: message})
         }
     }
-    const { error, itemsInCart } = state
+    const { error, itemsInCart, items } = state
 
     return(<>
         <main className="main">
             {error && <Feedback message={error}/>}
             <Route path="/home" render={() => <ProductList items={items} onAddToCart={onAddtoCartHandler} />} />
             <Route path="/home" render={() => <CartList items={itemsInCart} onRemoveFromCart={onRemoveFromCartHandler} />} />
-            {/* // {error && <Feedback message={error}/>}
-            // {!error && <ProductList items={items} onAddToCart={onAddtoCartHandler} />}
-            // {!error && <CartList items={itemsInCart} onRemoveFromCart={onRemoveFromCartHandler} />} */}
         </main>
     </>)
 })

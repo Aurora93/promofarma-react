@@ -20,7 +20,9 @@ module.exports = function() {
         const data = await response.json()
 
         const itemsInCart = data.filter(({ id }) => context.cart.indexOf(id) !== -1)
-
+        
+        
+        debugger
         return itemsInCart
     })();
 }

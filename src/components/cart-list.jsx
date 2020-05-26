@@ -24,7 +24,7 @@ export default withRouter(function ({ onRemoveFromCart }) {
             <div className="cart-list__container">
             <p className="cart-list__header">MI CESTA</p>
                 <div className="cart-list__bar"></div>
-                <div className="cart__product-list--hidden">
+                <div className="cart-list__product-list--hidden">
                 <ul className="cart-list__list">
                     {itemsInCart.map(item => <CartItem key={item.id} item={item} onRemoveFromCart={onRemoveFromCart}/>)}
                 </ul>

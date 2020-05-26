@@ -9,7 +9,7 @@ const fetch = require('node-fetch')
  */
 
 module.exports = function(productId) {
-    if (!(productId instanceof Number)) throw new TypeError(`${productId} is not a number`)
+    //if (!(productId instanceof Number)) throw new TypeError(`${productId} is not a number`)
 
     return (async() => {
         const response = await fetch("data/data.json", {

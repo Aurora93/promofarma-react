@@ -11,7 +11,7 @@ const fetch = require('node-fetch')
  */
 
 module.exports = function (productId) {
-    if (!(productId instanceof Number)) throw new TypeError(`${productId} is not a number`)
+ //if (!(productId instanceof Number)) throw new TypeError(`${productId} is not a number`)
 
     return (async() => {
         const response = await fetch("data/data.json", {
@@ -26,9 +26,7 @@ module.exports = function (productId) {
         const product = data.find(({ id }) => id === productId )
         if (!product) return new Error(`product with id ${productId} does not exist`)
         
-        const productInCart = context.cart.find(id => id === productId )
-        if (productInCart) return new Error(`product with id ${productId} is already in the cart`)
-
         context.cart.splice(context.cart.findIndex(id => id === productId), 1)
+             
     })()
 }

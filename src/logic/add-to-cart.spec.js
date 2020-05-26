@@ -52,4 +52,4 @@ describe("addToCart", () => {
     after(function() {
         context.cart.length = 0;
     });
-}.bind(context))
+}
