@@ -14,8 +14,13 @@ module.exports = function (productId) {
     if (!(productId instanceof Number)) throw new TypeError(`${productId} is not a number`)
 
     return (async() => {
-        const response = await fetch("../../public/data/data.json")
-
+        const response = await fetch("data/data.json", {
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        
         const data = await response.json()
 
         const product = data.find(({ id }) => id === productId )

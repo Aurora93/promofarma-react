@@ -8,9 +8,17 @@ const fetch = require('node-fetch')
 
 module.exports = function () {
     return (async()=> {
-        const response = await fetch("../../public/data/data.json")
-        const allProducts = await response.json()
 
+    
+        const response = await fetch("data/data.json", {
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        
+        const allProducts = await response.json()
+        
         return allProducts
     })()
 }

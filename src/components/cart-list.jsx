@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CartItem from './cart-item'
+import { Context } from './context-provider'
+import { withRouter } from 'react-router-dom'
+import {retrieveCartProducts} from '../logic'
 
-function CartList({ results, addItem, onRemoveFromCart }) {
+export default withRouter(function ({ onRemoveFromCart }) {
+    const [state, setState] = useContext(Context)
+    const [itemsInCart, setItemsInCart] = useState([])
     const [quantity, setQuantity] = useState(0)
     const [total, setTotal] = useState(0)
 
     useEffect(() => {
-        setQuantity(results.length)
-    }, [results.length])
-
-    useEffect(() => {
-        const totalPrice = results.reduce((accum, { price }) => accum += price, 0)
-        setTotal(totalPrice)
-    }, [results])
+        retrieveCartProducts()
+        .then(products => {
+            setItemsInCart(products)
+            setQuantity(products.length)
+            setTotal(products.reduce((accum, { price }) => accum += price, 0))
+        })
+    }, [state])
 
     return (<>
         <section className="cart-list">
@@ -21,19 +26,17 @@ function CartList({ results, addItem, onRemoveFromCart }) {
                 <div className="cart-list__bar"></div>
                 <div className="cart__product-list--hidden">
                 <ul className="cart-list__list">
-                    {results.map(item => <CartItem key={item.id} item={item} onRemoveFromCart={onRemoveFromCart}/>)}
+                    {itemsInCart.map(item => <CartItem key={item.id} item={item} onRemoveFromCart={onRemoveFromCart}/>)}
                 </ul>
                 </div>
-                <div className="cart__total">
-                    <div className="cart__quantity">
-                        <p className="cart__text">TOTAL</p>
-                        <p className="cart__amount">{quantity}</p>
+                <div className="cart-list__total">
+                    <div className="cart-list__quantity">
+                        <p className="cart-list__text">TOTAL</p>
+                        <p className="cart-list__amount">({quantity} {`${quantity === 1 ? 'producto' : 'productos'}`})</p>
                     </div>
-                    <span className="cart__total-price">{total.toFixed(2)} €</span>
+                    <span className="cart-list__total-price">{total.toFixed(2)} €</span>
                 </div>
             </div>
         </section>
     </>)
-}
-
-export default CartList
+})

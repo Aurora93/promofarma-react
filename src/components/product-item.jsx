@@ -15,7 +15,7 @@ function ProductItem({ item: { id, name, price }, onAddToCart }){
             <p className="product-item__name">{name}</p>
             <p className={`product-item__price${checked === id ? '--disabled' : ''}`}>{price} €</p>
             <img 
-                src={"../../public/icons/add-to-cart.png"} 
+                src={"/icons/add-to-cart.png"} 
                 alt="" 
                 className={`product-item__add-to-cart${checked === id ? '--disabled' : ''}`} onClick={onAddToCartHandler}
             />

@@ -10,7 +10,7 @@ function CartItem({ item: { id, image, name, price }, onRemoveFromCart }) {
     return (<>
         <li className="cart-item">
             <div className="cart-item__left">
-                <img src={`../../public/product-images/${image}`} alt="" className="cart-item__image"/>
+                <img src={`/product-images/${image}`} alt="" className="cart-item__image"/>
                 <p className="cart-item__">{name}</p>
             </div>
 
