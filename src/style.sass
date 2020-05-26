@@ -1,0 +1,25 @@
+@import ./config
+@import ./components/cart-item
+@import ./components/cart-list
+@import ./components/product-item
+@import ./components/product-list
+@import ./components/feedback
+
+body
+    margin: 0
+    padding: 0
+    width: 100%
+    height: 100%
+
+.main
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+@media only screen and (min-width: 900px)
+    .main
+        height: auto
+        display: grid
+        grid-template-columns: 60% 1fr
+        padding: 5%
