@@ -1,4 +1,6 @@
 const { expect } = require('chai')
+const context = require('./context')
+const addToCart = require('./add-to-cart')
 
 describe("addToCart", () => {
     var data, randomProductId;
@@ -11,7 +13,6 @@ describe("addToCart", () => {
         randomProductId = data[Math.floor(Math.random() * data.length)].id;
 
         await addToCart(randomProductId)
-        expect(context.cart).to.exist;
         expect(context.cart).to.be.instanceof(Array);
         expect(context.cart[0]).to.equal(randomProductId);
     });
@@ -37,19 +38,19 @@ describe("addToCart", () => {
 
     it("should fail to add the product to the cart if the ID passed is not a number", function() {
         randomProductId = "some string";
-        expect(function() { addToCart(randomProductId, function() {}) }).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { addToCart(randomProductId) }).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = undefined;
-        expect(function() { addToCart(randomProductId, function() {}) }).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { addToCart(randomProductId) }).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = [];
-        expect(function() { addToCart(randomProductId, function() {}) }).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { addToCart(randomProductId) }).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = {};
-        expect(function() { addToCart(randomProductId, function() {}) }).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { addToCart(randomProductId) }).to.throw(TypeError, randomProductId + " is not a number");
     });
 
-    after(function() {
+    after(()=> {
         context.cart.length = 0;
     });
-}
+})

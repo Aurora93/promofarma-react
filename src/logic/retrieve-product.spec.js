@@ -25,22 +25,22 @@ describe("retrieveProduct", function() {
 
     it("should fail to retrieve the product if the first parameter is not a number", function() {
         randomProductId = "some string";
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = undefined;
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = function(){};
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = null;
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = [];
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
 
         randomProductId = {};
-        expect(function() { retrieveProduct(randomProductId).to.throw(TypeError, randomProductId + " is not a number");
+        expect(function() { retrieveProduct(randomProductId)}).to.throw(TypeError, randomProductId + " is not a number");
     });
 
     

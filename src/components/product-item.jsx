@@ -22,5 +22,4 @@ function ProductItem({ item: { id, name, price }, onAddToCart }){
         </li>
     </>)
 }
-
 export default ProductItem

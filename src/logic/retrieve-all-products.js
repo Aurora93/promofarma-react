@@ -8,8 +8,6 @@ const fetch = require('node-fetch')
 
 module.exports = function () {
     return (async()=> {
-
-    
         const response = await fetch("data/data.json", {
             headers : { 
                 'Content-Type': 'application/json',

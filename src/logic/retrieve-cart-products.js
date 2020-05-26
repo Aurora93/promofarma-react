@@ -21,8 +21,6 @@ module.exports = function() {
 
         const itemsInCart = data.filter(({ id }) => context.cart.indexOf(id) !== -1)
         
-        
-        debugger
         return itemsInCart
     })();
 }

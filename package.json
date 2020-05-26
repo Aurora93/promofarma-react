@@ -17,8 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test-compo": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test": "npx mocha ./src/logic",
+    "test-debug": "npx mocha debug logic"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -25,8 +25,10 @@ module.exports = function (productId) {
 
         const product = data.find(({ id }) => id === productId )
         if (!product) return new Error(`product with id ${productId} does not exist`)
+
+        const productInCart = context.cart.find(id => id === productId )
+        if (!productInCart) return new Error(`product with id ${productId} is not in the cart`)
         
         context.cart.splice(context.cart.findIndex(id => id === productId), 1)
-             
     })()
 }
