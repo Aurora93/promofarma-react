@@ -5,7 +5,6 @@ import { Route, withRouter } from 'react-router-dom'
 
 export default withRouter(function ({ history }) {
     const [state, setState] = useContext(Context)
-    // const [items, setItems] = useState([])
 
     useEffect(() => {
         render()
