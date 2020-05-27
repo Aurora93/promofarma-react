@@ -1,4 +1,3 @@
-const context = require('./context');
 const fetch = require('node-fetch') 
 
 /**
@@ -18,8 +17,13 @@ module.exports = function() {
         })
         
         const data = await response.json()
+        
+        let itemsInCart = localStorage.getItem('cart')
 
-        const itemsInCart = data.filter(({ id }) => context.cart.indexOf(id) !== -1)
+        if(itemsInCart) (itemsInCart = JSON.parse(itemsInCart))
+        else itemsInCart = []
+
+        itemsInCart = data.filter(({ id }) => itemsInCart.indexOf(id) !== -1)
         
         return itemsInCart
     })();

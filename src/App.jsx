@@ -15,7 +15,6 @@ export default withRouter(function ({ history }) {
         (async() => {
             const products = await retrieveAllProducts()
             setState({ ...state, items: products })
-            // setItems(products)
 
             const productsInCart = await retrieveCartProducts()
             setState({ ...state, itemsInCart: productsInCart })
@@ -36,8 +35,7 @@ export default withRouter(function ({ history }) {
     }
 
     async function onRemoveFromCartHandler (id) {
-        try {
-            
+        try {           
             await removeFromCart(id)
             const productsInCart = await retrieveCartProducts()
             
