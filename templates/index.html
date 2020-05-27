@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promofarma App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="main">
+        <section class="product-list">
+            <div class="product-list__container">
+                <ul class="product-list__list">
+                    <li class="product">
+                        <p class="product__name">LaJusticia colágeno con magnesio 450comp</p>
+                        <p class="product__price">14,35 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                    <li class="product">
+                        <p class="product__name">Xhekpon® crema facial 40ml</p>
+                        <p class="product__price">6,49 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                    <li class="product">
+                        <p class="product__name">Cerave® Crema Hidratante 340ml</p>
+                        <p class="product__price">11,70 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                    <li class="product">
+                        <p class="product__name">Hyabak solución 10ml</p>
+                        <p class="product__price">9,48 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                    <li class="product">
+                        <p class="product__name">Fotoprotector ISDIN® Fusion Water SPF 50+ 50ml</p>
+                        <p class="product__price">19,74 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                    <li class="product">
+                        <p class="product__name">Piz Buin® Allergy SPF50+ loción 200ml</p>
+                        <p class="product__price">8,65 €</p>
+                        <img class="product__add-to-cart" src="../public/icons/add-to-cart.png" alt="">
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="cart">
+            <div class="cart__container">
+                <p class="cart__header">MI CESTA:</p>
+
+                <div class="cart__bar"></div>
+
+                <div class="cart__product-list--hidden">
+                    <ul class="cart__list">
+                        <li class="cart-item">
+                            <div class="cart-item__left">
+                                <img src="../public/product-images/xhekpon-crema.jpg" alt="" class="cart-item__image">
+                                <p class="cart-item__name">Xhekpon® crema facial 40ml</p>
+                            </div>
+                            <div class="cart-item__price">
+                                <span class="cart-item__price-value">6,49 €</span>
+                                <button class="cart-item__delete-button">Eliminar</button>
+                            </div>
+                        </li>
+                        <li class="cart-item">
+                            <div class="cart-item__left">
+                                <img src="../public/product-images/cerave-crema.jpg" alt="" class="cart-item__image">
+                                <p class="cart-item__name">Cerave® Crema Hidratante 340ml</p>
+                            </div>
+                            <div class="cart-item__price">
+                                <span class="cart-item__price-value">11,70 €</span>
+                                <button class="cart-item__delete-button">Eliminar</button>
+                            </div>
+                        </li>
+                        <li class="cart-item">
+                            <div class="cart-item__left">
+                                <img src="../public/product-images/hyabak-solucion.jpg" alt="" class="cart-item__image">
+                                <p class="cart-item__name">Hyabak solución 10ml</p>
+                            </div>
+                            <div class="cart-item__price">
+                                <span class="cart-item__price-value">9,48 €</span>
+                                <button class="cart-item__delete-button">Eliminar</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="cart__total">
+                    <div class="cart__quantity">
+                        <p class="cart__text">TOTAL</p>
+                        <p class="cart__amount">(3 productos)</p>
+                    </div>
+                    <span class="cart__total-price">27,06 €</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "LaJusticia colágeno con magnesio 450comp",
+        "image": "lajusticia-colageno.jpg",
+        "price": 14.35
+    },
+    {
+        "id": 2,
+        "name": "Xhekpon® crema facial 40ml",
+        "image": "xhekpon-crema.jpg",
+        "price": 6.49
+    },
+    {
+        "id": 3,
+        "name": "Cerave® Crema Hidratante 340ml",
+        "image": "cerave-crema.jpg",
+        "price": 11.70
+    },
+    {
+        "id": 4,
+        "name": "Hyabak solución 10ml",
+        "image": "hyabak-solucion.jpg",
+        "price": 9.48
+    },
+    {
+        "id": 5,
+        "name": "Fotoprotector ISDIN® Fusion Water SPF 50+ 50ml",
+        "image": "fotoprotector-isdin.jpg",
+        "price": 19.74
+    },
+    {
+        "id": 6,
+        "name": "Piz Buin® ALlergy SPF50+ loción 200ml",
+        "image": "piz-buin.jpg",
+        "price": 8.65
+    }
+]

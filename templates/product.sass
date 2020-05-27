@@ -1,0 +1,26 @@
+@import ./config
+
+.product
+    display: grid
+    grid-template-columns: 2.95fr repeat(2, 1fr)
+    column-gap: 0.5rem
+    margin: 0.5rem auto
+    @include text-style(0.9em)
+
+    &__name
+        margin: 0
+        align-self: center
+
+    &__price
+        @extend %product-price
+
+        &--disabled
+            @extend %product-price
+            color: #cccccc
+
+    &__add-to-cart
+        @extend %button-success
+
+        &--disabled
+            @extend %button-success
+            background-color: #cccccc
