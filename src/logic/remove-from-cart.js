@@ -30,5 +30,6 @@ module.exports = function (productId) {
         if (!productInCart) return new Error(`product with id ${productId} is not in the cart`)
         
         context.cart.splice(context.cart.findIndex(id => id === productId), 1)
+        localStorage.setItem('cart', JSON.stringify(context.cart))
     })()
 }

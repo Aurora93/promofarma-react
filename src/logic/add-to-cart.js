@@ -30,6 +30,7 @@ module.exports = function (productId) {
         if (productInCart) return new Error(`product with id ${productId} is already in the cart`)
 
         context.cart.push(productId)
+        localStorage.setItem('cart', JSON.stringify(context.cart))
     })(); 
     
 }
