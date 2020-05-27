@@ -1,4 +1,3 @@
-const context = require('./context')
 const fetch = require('node-fetch') 
 
 /**
@@ -22,15 +21,21 @@ module.exports = function (productId) {
         })
         
         const data = await response.json()
+
+        let itemsInCart = localStorage.getItem('cart')
+
+        if(itemsInCart) (itemsInCart = JSON.parse(itemsInCart))
+        else itemsInCart = []
         
         const product = data.find(({ id }) => id === productId )
         if (!product) return new Error(`product with id ${productId} does not exist`)
         
-        const productInCart = context.cart.find(id => id === productId )
+        const productInCart = itemsInCart.find(id => id === productId )
         if (productInCart) return new Error(`product with id ${productId} is already in the cart`)
 
-        context.cart.push(productId)
-        localStorage.setItem('cart', JSON.stringify(context.cart))
+        //context.cart.push(productId)
+        itemsInCart.push(productId)
+        localStorage.setItem('cart', JSON.stringify(itemsInCart))
     })(); 
     
 }

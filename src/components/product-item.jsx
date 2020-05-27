@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 function ProductItem({ item: { id, name, price }, onAddToCart }){
     const [checked, setChecked] = useState(undefined)
-    const [cart, setCart ] = useState([])
+    const [itemsInCart, setItemsInCart ] = useState([])
 
     useEffect(() => {
-        let cart = localStorage.getItem('cart')
+        let itemsInCart = localStorage.getItem('cart')
 
-        if(cart) {
-            cart = JSON.parse(cart)
-            setCart(cart)
-        }else{
-            cart=[]
-        } 
-    }, [localStorage.getItem('cart', cart)])
+        if(itemsInCart) {
+            (itemsInCart = JSON.parse(itemsInCart))
+            setItemsInCart(itemsInCart)
+        } else itemsInCart = []
+    }, [localStorage.getItem('cart', itemsInCart)])
 
     function onAddToCartHandler (event) {
         event.preventDefault()
@@ -25,11 +23,11 @@ function ProductItem({ item: { id, name, price }, onAddToCart }){
     return (<>
         <li className="product-item">
             <p className="product-item__name">{name}</p>
-            <p className={`product-item__price${cart.includes(id) ? '--disabled' : ''}`}>{price} €</p>
+            <p className={`product-item__price${itemsInCart.includes(id) ? '--disabled' : ''}`}>{price} €</p>
             <img 
                 src={"/icons/add-to-cart.png"} 
                 alt="" 
-                className={`product-item__add-to-cart${cart.includes(id) ? '--disabled' : ''}`} onClick={onAddToCartHandler}
+                className={`product-item__add-to-cart${itemsInCart.includes(id) ? '--disabled' : ''}`} onClick={onAddToCartHandler}
             />
         </li>
     </>)
