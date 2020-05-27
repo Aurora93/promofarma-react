@@ -7,6 +7,7 @@ export default withRouter(function ({ history }) {
     const [state, setState] = useContext(Context)
 
     useEffect(() => {
+        localStorage.clear()
         render()
     }, [])
 
